@@ -21,6 +21,15 @@ def check_winner(board):
 
     return False
 
+def is_board_full(board):
+    """
+    Checks if the board is full (no empty spaces left).
+    """
+    for row in board:
+        if " " in row:
+            return False
+    return True
+
 def get_valid_input(prompt):
     """
     Prompts the user for input and ensures it is an integer between 0 and 2.
@@ -44,10 +53,15 @@ def tic_tac_toe():
         col = get_valid_input("Enter column (0, 1, or 2) for player " + player + ": ")
         if board[row][col] == " ":
             board[row][col] = player
-            if player == "X":
-                player = "O"
-            else:
-                player = "X"
+            if check_winner(board):
+                print_board(board)
+                print("Player " + player + " wins!")
+                return
+            if is_board_full(board):
+                print_board(board)
+                print("It's a tie! No more moves left.")
+                return
+            player = "O" if player == "X" else "X"
         else:
             print("That spot is already taken! Try again.")
 
