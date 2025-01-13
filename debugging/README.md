@@ -1,0 +1,1 @@
+Exercice Week of 1/13/2025 Enhancing Code Quality and Efficiency with ChatGPT
